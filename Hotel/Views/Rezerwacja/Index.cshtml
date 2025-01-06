@@ -1,0 +1,88 @@
+﻿@model Hotel.Models.Rezerwacja
+@{
+    <h1>Czy chcesz zarezerwować pokój?</h1>
+    <form asp-action="Rezerwacja" method="post">
+
+        <div>
+            <label asp-for="Name">Twoje Imię</label>
+            <input asp-for="Name" />
+        </div>
+
+        <div>
+            <label asp-for="Surname">Twoje Nazwisko</label>
+            <input asp-for="Surname" />
+        </div>
+
+
+        <div>
+            <label asp-for="Mail">Twój E-mail</label>
+            <input asp-for="Mail" />
+        </div>
+
+        <div>
+            <label asp-for="IDCard">Numer dokumentu tożsamości</label>
+            <input asp-for="IDCard" />
+        </div>
+
+        <div>
+            <label asp-for="City">Miejsce zamieszkania</label>
+            <input asp-for="City" />
+        </div>
+
+
+        <div>
+            <label asp-for="Street">Ulica</label>
+            <input asp-for="Street" />
+        </div>
+
+        <div>
+            <label asp-for="Building">Numer budynku</label>
+            <input asp-for="Building" />
+        </div>
+
+        <div>
+            <label asp-for="Apartment">Numer lokalu</label>
+            <input asp-for="Apartment" />
+        </div>
+
+        <div>
+            <label asp-for="PostalCode">Kod pocztowy</label>
+            <input asp-for="PostalCode" />
+        </div>
+
+        <div>
+            <label asp-for="PostOffice">Poczta</label>
+            <input asp-for="PostOffice" />
+        </div>
+
+       
+
+        <div>
+            <label asp-for="HowManyRooms">Ile pokoi</label>
+            <input type="number" min="1" max="12" value="1" asp-for="HowManyRooms" />
+        </div>
+
+        <div>
+            <label asp-for="HowManyBeds">Ile łóżek</label>
+            <input type="number" min="1" max="30" value="1"  asp-for="HowManyBeds" />
+        </div>
+
+
+
+        <div asp-validation-summary="All"></div>
+
+        <div>
+            <input type="submit" value="Zarezerwuj" />
+        </div>
+
+        <div>
+            <input type="reset" value="Wyczyść" />
+
+
+        </div>
+
+    </form>
+
+
+}
+
