@@ -17,7 +17,7 @@ namespace Hotel.Models
 
         [Required(ErrorMessage = "Proszę podaj Email")]
         [RegularExpression(".+\\@.+\\.[a-z]{2,3}")]
-        public string Mail { get; set; }
+        public string Email { get; set; }
 
 
         [Required(ErrorMessage = "Proszę podaj numer dowodu tożsamości")]

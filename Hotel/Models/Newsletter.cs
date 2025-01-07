@@ -13,7 +13,7 @@ namespace Hotel.Models
 
         [Required(ErrorMessage = "Proszę podaj Email")]
         [RegularExpression(".+\\@.+\\.[a-z]{2,3}")]
-        public string Mail {  get; set; }
+        public string Email {  get; set; }
 
         [Display(Name = "Wyrażam zgodę na przetwarzanie moich danych przez Hotel XYZ")]
         [Range(typeof(bool), "true", "true", ErrorMessage = "Musisz wyrazić zgodę.")]
