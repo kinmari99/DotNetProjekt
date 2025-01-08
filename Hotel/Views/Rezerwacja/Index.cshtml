@@ -54,8 +54,16 @@
             <label asp-for="PostOffice">Poczta</label>
             <input asp-for="PostOffice" />
         </div>
+        <div>
+        <label asp-for="CheckInDate" class="control-label"></label>
+        <input asp-for="CheckInDate" class="form-control" type="date" />
+        <span asp-validation-for="CheckInDate" class="text-danger"></span>
+        </div>
 
-       
+        <div>
+            <label asp-for="Days">Ile dni ma trwać rezerwacja?</label>
+            <input type="number" min="1"  value="1" asp-for="Days" />
+        </div>
 
         <div>
             <label asp-for="HowManyRooms">Ile pokoi</label>

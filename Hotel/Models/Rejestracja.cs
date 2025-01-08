@@ -1,10 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hotel.Models
 {
     public class Rejestracja
     {
+        [Column(TypeName = "int")]
+
         public int Id { get; set; }
+
 
         [Required(ErrorMessage = "Proszę podaj Imię")]
         [MinLength(2)]
