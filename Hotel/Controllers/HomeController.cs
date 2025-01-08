@@ -1,5 +1,6 @@
 ﻿using Hotel.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace Hotel.Controllers
@@ -28,5 +29,8 @@ namespace Hotel.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+    
     }
+   
+
 }

@@ -5,6 +5,8 @@ namespace Hotel.Controllers
 {
     public class NewsletterController : Controller
     {
+        private static HotelsDBContext _context;
+        public NewsletterController(HotelsDBContext context) {  _context = context; }
         public IActionResult Index()
         {
             return View();
@@ -14,6 +16,8 @@ namespace Hotel.Controllers
         {
             if (ModelState.IsValid)
             {
+                _context.Newsletters.Add(newsletter);
+                _context.SaveChanges();
                 return View("Wynik", newsletter);
             }
             else { return View("Index", newsletter); }

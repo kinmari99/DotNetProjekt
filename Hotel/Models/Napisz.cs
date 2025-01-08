@@ -6,11 +6,11 @@ namespace Hotel.Models
     public class Napisz
     {
         [Required(ErrorMessage = "Proszę podaj Imię")]
-        [MinLength(2)]
+        [MinLength(2, ErrorMessage = "Imię za krótkie. Minimum 2 znaki")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Proszę podaj Nazwisko")]
-        [MinLength(2)]
+        [MinLength(2, ErrorMessage = "Nazwisko za krótkie. Minimum 2 znaki")]
 
         public string Surname {  get; set; }
 

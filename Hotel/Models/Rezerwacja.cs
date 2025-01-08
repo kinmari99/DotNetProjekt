@@ -8,16 +8,24 @@ namespace Hotel.Models
     {
         [Column(TypeName = "int")]
 
-        public int Id { get; set; }
+        public int IdRezerwacja { get; set; }
+
+        [Column(TypeName = "int")]
+
+    
+        public Użytkownik? użytkownik { get; set; }
+
+     
+        public Pracownik? pracownik { get; set; }
 
         [Required(ErrorMessage = "Proszę podaj Imię")]
-        [MinLength(2)]
+        [MinLength(2, ErrorMessage = "Imię minimum 2 znaki.")]
         [Column(TypeName = "nvarchar(15)")]
 
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Proszę podaj Nazwisko")]
-        [MinLength(2)]
+        [MinLength(2, ErrorMessage = "Nazwisko minimum 2 znaki.")]
         [Column(TypeName = "nvarchar(50)")]
 
         public string Surname { get; set; }
@@ -25,24 +33,25 @@ namespace Hotel.Models
         [Required(ErrorMessage = "Proszę podaj Email")]
         [RegularExpression(".+\\@.+\\.[a-z]{2,3}")]
         [Column(TypeName = "nvarchar(50)")]
+        [Key]
 
         public string Email { get; set; }
 
 
         [Required(ErrorMessage = "Proszę podaj numer dowodu tożsamości")]
-        [MaxLength(15)]
+        [MaxLength(15, ErrorMessage = "Telefon maksymalnie 15 znaków")]
         [Column(TypeName = "nvarchar(15)")]
 
         public string IDCard { get; set; }
 
         [Required(ErrorMessage = "Proszę podaj miejsce zamieszkania")]
-        [MaxLength(30)]
+        [MaxLength(30, ErrorMessage = "Miejsce zamieszkania maksymalnie 30 znaków.")]
         [Column(TypeName = "nvarchar(30)")]
 
         public string City { get; set; }
 
         [Required(ErrorMessage = "Proszę podaj miejsce ulicę")]
-        [MaxLength(30)]
+        [MaxLength(30, ErrorMessage = "Ulica maksymalnie 30 znaków")]
         [Column(TypeName = "nvarchar(30)")]
 
         public string Street { get; set; }
@@ -58,12 +67,12 @@ namespace Hotel.Models
 
 
         [Required(ErrorMessage = "Proszę podaj kod pocztowy")]
-        [MaxLength(6)]
+        [MaxLength(6, ErrorMessage = "Kod pocztowy maksymalnie 6 znaków")]
         [Column(TypeName = "char(8)")]
 
         public string PostalCode { get; set; }
         [Required(ErrorMessage = "Proszę podaj pocztę")]
-        [MaxLength(30)]
+        [MaxLength(30, ErrorMessage = "Poczta maksymalnie 30 znaków")]
         [Column(TypeName = "nvarchar(30)")]
 
         public string PostOffice { get; set; }

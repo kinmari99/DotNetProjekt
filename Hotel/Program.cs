@@ -1,3 +1,6 @@
+using Hotel.Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace Hotel
 {
     public class Program
@@ -8,6 +11,7 @@ namespace Hotel
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<HotelsDBContext>(options=> options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection")));
 
             var app = builder.Build();
 
