@@ -4,6 +4,8 @@ namespace Hotel.Models
 {
     public class Rejestracja
     {
+        public int Id { get; set; }
+
         [Required(ErrorMessage = "Proszę podaj Imię")]
         [MinLength(2)]
         public string Name { get; set; }
@@ -12,7 +14,7 @@ namespace Hotel.Models
         [MinLength(2)]
         public string Surname { get; set; }
 
-        [Required(ErrorMessage = "Proszę podaj login")]
+        [Required(ErrorMessage = "Proszę podaj Login")]
         [MinLength(8)]
         public string Nickname { get; set; }
 
