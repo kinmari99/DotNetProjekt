@@ -48,12 +48,12 @@ namespace Hotel.Controllers
             return View("Index", logowanie);
         }
 
-        [HttpGet] // Zmiana z [HttpPost] na [HttpGet]
+        [HttpGet] 
         public async Task<IActionResult> Wyloguj()
         {
-            // Wylogowanie użytkownika
+            
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Index", "Home"); // Przekierowanie na stronę główną
+            return RedirectToAction("Index", "Home"); 
         }
     }
 }

@@ -55,14 +55,14 @@ namespace Hotel.Controllers
             if (User.IsInRole("Admin") || rezerwacja.Email == User.Identity.Name)
 
             {
-                // Pozwól na modyfikację
+                
                 return View(rezerwacja);
             }
             
-            return Forbid(); // Brak dostępu
+            return Forbid(); 
 
 
-           // return View(rezerwacja);
+          
         }
 
         // GET: Formularz do edycji rezerwacji
@@ -78,11 +78,11 @@ namespace Hotel.Controllers
             
             if (User.IsInRole("Admin") || rezerwacja.Email == User.Identity.Name)
             {
-                // Pozwól na modyfikację
+                
                 return View(rezerwacja);
             }
 
-            return Forbid(); // Brak dostępu
+            return Forbid(); 
 
             
         }
@@ -129,13 +129,13 @@ namespace Hotel.Controllers
             if (User.IsInRole("Admin") || rezerwacja.Email == User.Identity.Name)
 
             {
-                // Pozwól na modyfikację
+                
                 return View(rezerwacja);
             }
 
-            return Forbid(); // Brak dostępu
+            return Forbid(); 
 
-            return View(rezerwacja);
+          
         }
 
         // POST: Usunięcie rezerwacji

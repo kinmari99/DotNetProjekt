@@ -33,7 +33,7 @@ namespace Hotel.Models
         .HasForeignKey(r => r.UserId);
 
             base.OnModelCreating(modelBuilder);
-            // Seed dla kategorii
+            
             modelBuilder.Entity<Pracownik>().HasData(
             new Pracownik { Id = 1, Name = "Anna", Surname="Kowalska", Email="akowalska@hotelxyz.pl" },
             new Pracownik { Id = 2, Name = "Jan", Surname="Iksiński", Email = "jiksinski@hotelxyz.pl" },
