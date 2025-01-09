@@ -34,12 +34,12 @@ namespace Hotel.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(15)");
 
-                    b.Property<int?>("użytkownikId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Email");
 
-                    b.HasIndex("użytkownikId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Newsletters");
                 });
@@ -213,7 +213,7 @@ namespace Hotel.Migrations
                 {
                     b.HasOne("Hotel.Models.Użytkownik", "użytkownik")
                         .WithMany("Newsletters")
-                        .HasForeignKey("użytkownikId");
+                        .HasForeignKey("UserId");
 
                     b.Navigation("użytkownik");
                 });

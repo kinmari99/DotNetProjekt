@@ -47,7 +47,7 @@ namespace Hotel.Migrations
                 columns: table => new
                 {
                     Email = table.Column<string>(type: "nvarchar(50)", nullable: false),
-                    użytkownikId = table.Column<int>(type: "int", nullable: true),
+                    UserId = table.Column<int>(type: "int", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(15)", nullable: false),
                     IsAccepted = table.Column<bool>(type: "bit", nullable: false)
                 },
@@ -55,8 +55,8 @@ namespace Hotel.Migrations
                 {
                     table.PrimaryKey("PK_Newsletters", x => x.Email);
                     table.ForeignKey(
-                        name: "FK_Newsletters_Users_użytkownikId",
-                        column: x => x.użytkownikId,
+                        name: "FK_Newsletters_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id");
                 });
@@ -115,9 +115,9 @@ namespace Hotel.Migrations
                 values: new object[] { 3, "pnowak@hotelxyz.pl", "Piotr", "Nowak" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Newsletters_użytkownikId",
+                name: "IX_Newsletters_UserId",
                 table: "Newsletters",
-                column: "użytkownikId");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Reservations_pracownikId",

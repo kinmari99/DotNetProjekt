@@ -6,7 +6,8 @@ namespace Hotel.Models
 {
     public class Newsletter
     {
-        [Column(TypeName = "int")]
+     
+        public int? UserId { get; set; }  // Klucz obcy
         public Użytkownik? użytkownik { get; set; }
 
         [Required(ErrorMessage = "Proszę podaj Imię")]

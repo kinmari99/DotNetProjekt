@@ -27,6 +27,11 @@ namespace Hotel.Models
            .WithMany(u => u.Reservations)  
            .HasForeignKey(r => r.UserId);
 
+            modelBuilder.Entity<Newsletter>()
+        .HasOne(r => r.użytkownik)
+        .WithMany(u => u.Newsletters)
+        .HasForeignKey(r => r.UserId);
+
             base.OnModelCreating(modelBuilder);
             // Seed dla kategorii
             modelBuilder.Entity<Pracownik>().HasData(

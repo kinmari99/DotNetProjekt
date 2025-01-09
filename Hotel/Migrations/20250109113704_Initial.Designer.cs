@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hotel.Migrations
 {
     [DbContext(typeof(HotelsDBContext))]
-    [Migration("20250109112334_Initial")]
+    [Migration("20250109113704_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,12 +36,12 @@ namespace Hotel.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(15)");
 
-                    b.Property<int?>("użytkownikId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Email");
 
-                    b.HasIndex("użytkownikId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Newsletters");
                 });
@@ -215,7 +215,7 @@ namespace Hotel.Migrations
                 {
                     b.HasOne("Hotel.Models.Użytkownik", "użytkownik")
                         .WithMany("Newsletters")
-                        .HasForeignKey("użytkownikId");
+                        .HasForeignKey("UserId");
 
                     b.Navigation("użytkownik");
                 });
