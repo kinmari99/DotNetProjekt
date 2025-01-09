@@ -1,5 +1,6 @@
 ﻿using Hotel.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.RegularExpressions;
 
 namespace Hotel.Controllers
 {
@@ -12,11 +13,15 @@ namespace Hotel.Controllers
             return View();
         }
 
+        
+
         [HttpPost]
         public IActionResult Rezerwacja(Rezerwacja rezerwacja)
         {
             if (ModelState.IsValid)
             {
+              Użytkownik match = _context.Users.FirstOrDefault(user => user.Email == rezerwacja.Email); 
+                rezerwacja.użytkownik = match;
                 _context.Reservations.Add(rezerwacja);
                 _context.SaveChanges();
                 return View("Wynik", rezerwacja);

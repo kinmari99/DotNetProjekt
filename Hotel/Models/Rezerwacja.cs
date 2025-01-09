@@ -12,7 +12,8 @@ namespace Hotel.Models
 
         [Column(TypeName = "int")]
 
-    
+        public int? UserId { get; set; }  // Klucz obcy
+       
         public Użytkownik? użytkownik { get; set; }
 
      

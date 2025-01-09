@@ -22,6 +22,11 @@ namespace Hotel.Models
                 .Property(u => u.Id)
                 .UseIdentityColumn();
 
+            modelBuilder.Entity<Rezerwacja>()
+           .HasOne(r => r.użytkownik)  
+           .WithMany(u => u.Reservations)  
+           .HasForeignKey(r => r.UserId);
+
             base.OnModelCreating(modelBuilder);
             // Seed dla kategorii
             modelBuilder.Entity<Pracownik>().HasData(

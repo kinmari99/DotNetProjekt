@@ -67,7 +67,7 @@ namespace Hotel.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    użytkownikId = table.Column<int>(type: "int", nullable: true),
+                    UserId = table.Column<int>(type: "int", nullable: true),
                     pracownikId = table.Column<int>(type: "int", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(15)", nullable: false),
                     Surname = table.Column<string>(type: "nvarchar(50)", nullable: false),
@@ -88,8 +88,8 @@ namespace Hotel.Migrations
                 {
                     table.PrimaryKey("PK_Reservations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Reservations_Users_użytkownikId",
-                        column: x => x.użytkownikId,
+                        name: "FK_Reservations_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id");
                     table.ForeignKey(
@@ -125,9 +125,9 @@ namespace Hotel.Migrations
                 column: "pracownikId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reservations_użytkownikId",
+                name: "IX_Reservations_UserId",
                 table: "Reservations",
-                column: "użytkownikId");
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -157,17 +157,17 @@ namespace Hotel.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int?>("pracownikId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("użytkownikId")
+                    b.Property<int?>("pracownikId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("pracownikId");
+                    b.HasIndex("UserId");
 
-                    b.HasIndex("użytkownikId");
+                    b.HasIndex("pracownikId");
 
                     b.ToTable("Reservations");
                 });
@@ -220,13 +220,13 @@ namespace Hotel.Migrations
 
             modelBuilder.Entity("Hotel.Models.Rezerwacja", b =>
                 {
+                    b.HasOne("Hotel.Models.Użytkownik", "użytkownik")
+                        .WithMany("Reservations")
+                        .HasForeignKey("UserId");
+
                     b.HasOne("Hotel.Models.Pracownik", "pracownik")
                         .WithMany("Reservations")
                         .HasForeignKey("pracownikId");
-
-                    b.HasOne("Hotel.Models.Użytkownik", "użytkownik")
-                        .WithMany("Reservations")
-                        .HasForeignKey("użytkownikId");
 
                     b.Navigation("pracownik");
 
