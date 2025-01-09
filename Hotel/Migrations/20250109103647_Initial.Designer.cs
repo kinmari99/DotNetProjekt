@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hotel.Migrations
 {
     [DbContext(typeof(HotelsDBContext))]
-    [Migration("20250108233554_Updates2")]
-    partial class Updates2
+    [Migration("20250109103647_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -69,12 +69,38 @@ namespace Hotel.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Workers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "akowalska@hotelxyz.pl",
+                            Name = "Anna",
+                            Surname = "Kowalska"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "jiksinski@hotelxyz.pl",
+                            Name = "Jan",
+                            Surname = "Iksiński"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Email = "pnowak@hotelxyz.pl",
+                            Name = "Piotr",
+                            Surname = "Nowak"
+                        });
                 });
 
             modelBuilder.Entity("Hotel.Models.Rezerwacja", b =>
                 {
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Apartment")
                         .HasColumnType("nvarchar(10)");
@@ -94,6 +120,9 @@ namespace Hotel.Migrations
                     b.Property<int>("Days")
                         .HasColumnType("int");
 
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<int?>("HowManyBeds")
                         .IsRequired()
                         .HasColumnType("int");
@@ -106,9 +135,6 @@ namespace Hotel.Migrations
                         .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
-
-                    b.Property<int>("IdRezerwacja")
-                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -139,7 +165,7 @@ namespace Hotel.Migrations
                     b.Property<int?>("użytkownikId")
                         .HasColumnType("int");
 
-                    b.HasKey("Email");
+                    b.HasKey("Id");
 
                     b.HasIndex("pracownikId");
 

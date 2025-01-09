@@ -8,7 +8,7 @@ namespace Hotel.Models
     {
         [Column(TypeName = "int")]
 
-        public int IdRezerwacja { get; set; }
+        public int Id { get; set; }
 
         [Column(TypeName = "int")]
 

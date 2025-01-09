@@ -18,7 +18,9 @@ namespace Hotel.Migrations
                     Name = table.Column<string>(type: "nvarchar(15)", nullable: false),
                     Surname = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     Nickname = table.Column<string>(type: "nvarchar(15)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(50)", nullable: false)
+                    Email = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    Haslo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    powtorzHaslo = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -45,9 +47,7 @@ namespace Hotel.Migrations
                 columns: table => new
                 {
                     Email = table.Column<string>(type: "nvarchar(50)", nullable: false),
-                    IdNewsletter = table.Column<int>(type: "int", nullable: false),
-                    IdUżytkownika = table.Column<int>(type: "int", nullable: false),
-                    użytkownikId = table.Column<int>(type: "int", nullable: false),
+                    użytkownikId = table.Column<int>(type: "int", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(15)", nullable: false),
                     IsAccepted = table.Column<bool>(type: "bit", nullable: false)
                 },
@@ -58,22 +58,20 @@ namespace Hotel.Migrations
                         name: "FK_Newsletters_Users_użytkownikId",
                         column: x => x.użytkownikId,
                         principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
                 name: "Reservations",
                 columns: table => new
                 {
-                    Email = table.Column<string>(type: "nvarchar(50)", nullable: false),
-                    IdRezerwacja = table.Column<int>(type: "int", nullable: false),
-                    IdUżytkownika = table.Column<int>(type: "int", nullable: false),
-                    użytkownikId = table.Column<int>(type: "int", nullable: false),
-                    IdPracownik = table.Column<int>(type: "int", nullable: false),
-                    pracownikId = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    użytkownikId = table.Column<int>(type: "int", nullable: true),
+                    pracownikId = table.Column<int>(type: "int", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(15)", nullable: false),
                     Surname = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(50)", nullable: true),
                     IDCard = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
                     City = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     Street = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
@@ -88,20 +86,33 @@ namespace Hotel.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Reservations", x => x.Email);
+                    table.PrimaryKey("PK_Reservations", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Reservations_Users_użytkownikId",
                         column: x => x.użytkownikId,
                         principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Reservations_Workers_pracownikId",
                         column: x => x.pracownikId,
                         principalTable: "Workers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
+
+            migrationBuilder.InsertData(
+                table: "Workers",
+                columns: new[] { "Id", "Email", "Name", "Surname" },
+                values: new object[] { 1, "akowalska@hotelxyz.pl", "Anna", "Kowalska" });
+
+            migrationBuilder.InsertData(
+                table: "Workers",
+                columns: new[] { "Id", "Email", "Name", "Surname" },
+                values: new object[] { 2, "jiksinski@hotelxyz.pl", "Jan", "Iksiński" });
+
+            migrationBuilder.InsertData(
+                table: "Workers",
+                columns: new[] { "Id", "Email", "Name", "Surname" },
+                values: new object[] { 3, "pnowak@hotelxyz.pl", "Piotr", "Nowak" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Newsletters_użytkownikId",
