@@ -48,5 +48,7 @@ namespace Hotel.Models
 
         public ICollection<Newsletter>? Newsletters { get; set; }
         public ICollection<Rezerwacja>? Reservations { get; set; }
+
+        public bool IsAdmin { get; set; } = false;
     }
 }

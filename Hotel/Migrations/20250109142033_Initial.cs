@@ -20,7 +20,8 @@ namespace Hotel.Migrations
                     Nickname = table.Column<string>(type: "nvarchar(15)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     Haslo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    powtorzHaslo = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    powtorzHaslo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsAdmin = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
