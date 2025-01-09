@@ -35,6 +35,13 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Rezerwacja">Zarezerwuj</a>
                         </li>
 
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Admin" asp-action="Panel">Panel administratora</a>
+                            </li>
+                        }
+
                         @if (User.Identity.IsAuthenticated)
                         {
                             <!-- Opcje dla zalogowanego użytkownika -->

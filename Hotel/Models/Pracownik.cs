@@ -28,5 +28,7 @@ namespace Hotel.Models
 
 public ICollection<Rezerwacja> Reservations { get; set; }
 
+        public bool IsAdmin { get; set; } = true;
+
     }
 }

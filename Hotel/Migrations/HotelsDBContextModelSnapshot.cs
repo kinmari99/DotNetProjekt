@@ -56,6 +56,9 @@ namespace Hotel.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(15)");
@@ -73,6 +76,7 @@ namespace Hotel.Migrations
                         {
                             Id = 1,
                             Email = "akowalska@hotelxyz.pl",
+                            IsAdmin = true,
                             Name = "Anna",
                             Surname = "Kowalska"
                         },
@@ -80,6 +84,7 @@ namespace Hotel.Migrations
                         {
                             Id = 2,
                             Email = "jiksinski@hotelxyz.pl",
+                            IsAdmin = true,
                             Name = "Jan",
                             Surname = "Iksiński"
                         },
@@ -87,6 +92,7 @@ namespace Hotel.Migrations
                         {
                             Id = 3,
                             Email = "pnowak@hotelxyz.pl",
+                            IsAdmin = true,
                             Name = "Piotr",
                             Surname = "Nowak"
                         });
@@ -210,6 +216,19 @@ namespace Hotel.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "kkowalska@gmail.com",
+                            Haslo = "zaq1@WSX",
+                            IsAdmin = true,
+                            Name = "Katarzyna",
+                            Nickname = "123456789",
+                            Surname = "Kowalska",
+                            powtorzHaslo = "zaq1@WSX"
+                        });
                 });
 
             modelBuilder.Entity("Hotel.Models.Newsletter", b =>

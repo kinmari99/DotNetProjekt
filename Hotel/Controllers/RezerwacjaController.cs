@@ -2,9 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
+using System;
 
 namespace Hotel.Controllers
 {
+    
     public class RezerwacjaController : Controller
     {
         private static HotelsDBContext _context;
@@ -49,8 +52,17 @@ namespace Hotel.Controllers
             {
                 return NotFound();
             }
+            if (User.IsInRole("Admin") || rezerwacja.Email == User.Identity.Name)
 
-            return View(rezerwacja);
+            {
+                // Pozwól na modyfikację
+                return View(rezerwacja);
+            }
+            
+            return Forbid(); // Brak dostępu
+
+
+           // return View(rezerwacja);
         }
 
         // GET: Formularz do edycji rezerwacji
@@ -62,7 +74,17 @@ namespace Hotel.Controllers
                 return NotFound();
             }
 
-            return View(rezerwacja);
+            
+            
+            if (User.IsInRole("Admin") || rezerwacja.Email == User.Identity.Name)
+            {
+                // Pozwól na modyfikację
+                return View(rezerwacja);
+            }
+
+            return Forbid(); // Brak dostępu
+
+            
         }
         // POST: Aktualizacja rezerwacji
         [HttpPost]
@@ -103,6 +125,15 @@ namespace Hotel.Controllers
             {
                 return NotFound();
             }
+
+            if (User.IsInRole("Admin") || rezerwacja.Email == User.Identity.Name)
+
+            {
+                // Pozwól na modyfikację
+                return View(rezerwacja);
+            }
+
+            return Forbid(); // Brak dostępu
 
             return View(rezerwacja);
         }

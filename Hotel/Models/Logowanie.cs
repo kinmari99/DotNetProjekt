@@ -5,6 +5,7 @@ namespace Hotel.Models
 {
     public class Logowanie
     {
+
         [Required(ErrorMessage = "Proszę podaj login")]
         [MinLength(8, ErrorMessage = "Login za krótki. Minimum 8 znaków")]
         public string Nickname { get; set; }

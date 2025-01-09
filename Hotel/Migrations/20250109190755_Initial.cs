@@ -36,7 +36,8 @@ namespace Hotel.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(15)", nullable: false),
                     Surname = table.Column<string>(type: "nvarchar(50)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(50)", nullable: false)
+                    Email = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    IsAdmin = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -101,19 +102,19 @@ namespace Hotel.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Workers",
-                columns: new[] { "Id", "Email", "Name", "Surname" },
-                values: new object[] { 1, "akowalska@hotelxyz.pl", "Anna", "Kowalska" });
+                table: "Users",
+                columns: new[] { "Id", "Email", "Haslo", "IsAdmin", "Name", "Nickname", "Surname", "powtorzHaslo" },
+                values: new object[] { 1, "kkowalska@gmail.com", "zaq1@WSX", true, "Katarzyna", "123456789", "Kowalska", "zaq1@WSX" });
 
             migrationBuilder.InsertData(
                 table: "Workers",
-                columns: new[] { "Id", "Email", "Name", "Surname" },
-                values: new object[] { 2, "jiksinski@hotelxyz.pl", "Jan", "Iksiński" });
-
-            migrationBuilder.InsertData(
-                table: "Workers",
-                columns: new[] { "Id", "Email", "Name", "Surname" },
-                values: new object[] { 3, "pnowak@hotelxyz.pl", "Piotr", "Nowak" });
+                columns: new[] { "Id", "Email", "IsAdmin", "Name", "Surname" },
+                values: new object[,]
+                {
+                    { 1, "akowalska@hotelxyz.pl", true, "Anna", "Kowalska" },
+                    { 2, "jiksinski@hotelxyz.pl", true, "Jan", "Iksiński" },
+                    { 3, "pnowak@hotelxyz.pl", true, "Piotr", "Nowak" }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Newsletters_UserId",

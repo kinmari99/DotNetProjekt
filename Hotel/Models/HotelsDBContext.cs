@@ -39,7 +39,10 @@ namespace Hotel.Models
             new Pracownik { Id = 2, Name = "Jan", Surname="Iksiński", Email = "jiksinski@hotelxyz.pl" },
             new Pracownik { Id = 3, Name = "Piotr", Surname="Nowak", Email = "pnowak@hotelxyz.pl" }
             );
+            modelBuilder.Entity<Użytkownik>().HasData(
+          new Użytkownik { Id = 1, Name = "Katarzyna", Surname = "Kowalska", Email = "kkowalska@gmail.com", IsAdmin=true, Nickname="123456789", Haslo="zaq1@WSX", powtorzHaslo="zaq1@WSX" }
 
+          );
 
         }
     }
