@@ -51,7 +51,7 @@ namespace Hotel.Models
 
         public string City { get; set; }
 
-        [Required(ErrorMessage = "Proszę podaj miejsce ulicę")]
+        [Required(ErrorMessage = "Proszę podaj ulicę")]
         [MaxLength(30, ErrorMessage = "Ulica maksymalnie 30 znaków")]
         [Column(TypeName = "nvarchar(30)")]
 
