@@ -40,7 +40,7 @@ namespace Hotel.Models
 
 
         [Required(ErrorMessage = "Proszę podaj numer dowodu tożsamości")]
-        [MaxLength(15, ErrorMessage = "Telefon maksymalnie 15 znaków")]
+        [MaxLength(15, ErrorMessage = "Numer dowodu tożsamości maksymalnie 15 znaków")]
         [Column(TypeName = "nvarchar(15)")]
 
         public string IDCard { get; set; }
